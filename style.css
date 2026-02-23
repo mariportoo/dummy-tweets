@@ -4,7 +4,6 @@
     --bg-dark: #000000;
     --twitter-gray: rgb(113, 118, 123);
     --twitter-white: rgb(231, 233, 234);
-    --twitter-border: rgb(47, 51, 54);
 }
 
 body {
@@ -49,14 +48,28 @@ body {
 
 /* Conteúdo */
 .content {
-    padding: 20px;
     overflow-y: auto;
 }
 
-.tweet-composer {
+.feed-header {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.tweet-composer {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.composer-right {
+    flex-grow: 1;
 }
 
 textarea {
@@ -64,33 +77,45 @@ textarea {
     background: transparent;
     border: none;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     resize: none;
     outline: none;
 }
 
-.btn-tweet {
+.btn-tweet,
+.btn-save {
     background-color: var(--twitter-blue);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: bold;
-    float: right;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-/* Perfil */
-.banner {
-    height: 150px;
-    background-color: #333;
-    border-radius: 10px;
+.btn-tweet:hover {
+    opacity: 0.9;
 }
 
-.profile-info {
-    padding: 15px;
+/* Configurações */
+.form-group {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
+.form-group input,
+.form-group textarea {
+    background: #111;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Card de Tweet */
 .tweet-card {
     display: flex;
     padding: 12px 16px;
@@ -114,32 +139,47 @@ textarea {
     display: flex;
     gap: 4px;
     font-size: 15px;
-    margin-bottom: 2px;
 }
 
 .display-name {
     font-weight: bold;
-    color: white;
+    color: var(--twitter-white);
 }
 
 .handle-name,
 .tweet-dot,
 .tweet-time {
-    color: #71767b;
+    color: var(--twitter-gray);
 }
 
 .tweet-text {
+    margin-top: 4px;
     font-size: 15px;
     line-height: 20px;
-    color: white;
     white-space: pre-wrap;
-    margin-bottom: 12px;
 }
 
 .tweet-icons {
     display: flex;
     justify-content: space-between;
     max-width: 425px;
-    color: #71767b;
+    margin-top: 12px;
+    color: var(--twitter-gray);
     font-size: 13px;
+}
+
+.tweet-icons span:hover {
+    color: var(--twitter-blue);
+    cursor: pointer;
+}
+
+/* Perfil */
+.banner {
+    height: 150px;
+    background-color: #333;
+}
+
+.profile-info {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
 }

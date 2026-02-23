@@ -24,16 +24,19 @@
         <main class="content">
 
             <section id="feed" class="view-section">
-                <h2>Página Inicial</h2>
+                <div class="feed-header">Página Inicial</div>
                 <div class="tweet-composer">
-                    <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
-                    <button class="btn-tweet" onclick="generateTweet()">Postar</button>
+                    <div class="tweet-avatar"></div>
+                    <div class="composer-right">
+                        <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
+                        <button class="btn-tweet" onclick="generateTweet()">Postar</button>
+                    </div>
                 </div>
                 <div id="main-feed"></div>
             </section>
 
             <section id="profile-config" class="view-section" style="display:none;">
-                <h2>Configurar Perfil</h2>
+                <div class="feed-header">Configurar Perfil</div>
                 <div class="form-group">
                     <label>Nome de Exibição:</label>
                     <input type="text" id="cfg-name" placeholder="Ex: Lorena Ferette">
