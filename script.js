@@ -29,17 +29,17 @@ function formatTwitterTime(date) {
     const diferencaEmSegundos = Math.floor((agora - date) / 1000);
 
     if (diferencaEmSegundos < 60) {
-        return `${diferencaEmSegundos}s`;
+        return `${diferencaEmSegundos} s`;
     }
 
     const diferencaEmMinutos = Math.floor(diferencaEmSegundos / 60);
     if (diferencaEmMinutos < 60) {
-        return `${diferencaEmMinutos}min`;
+        return `${diferencaEmMinutos} min`;
     }
 
     const diferencaEmHoras = Math.floor(diferencaEmMinutos / 60);
     if (diferencaEmHoras < 24) {
-        return `${diferencaEmHoras}h`;
+        return `${diferencaEmHoras} h`;
     }
 
     // Mais de 24h: mostra a data fixa
