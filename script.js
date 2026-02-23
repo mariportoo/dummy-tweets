@@ -23,6 +23,32 @@ function renderUserProfile() {
     document.getElementById('view-display-bio').innerText = profile.bio;
 }
 
+// Função para formatar o tempo estilo Twitter
+function formatTwitterTime(date) {
+    const agora = new Date();
+    const diferencaEmSegundos = Math.floor((agora - date) / 1000);
+
+    if (diferencaEmSegundos < 60) {
+        return `${diferencaEmSegundos}s`;
+    }
+
+    const diferencaEmMinutos = Math.floor(diferencaEmSegundos / 60);
+    if (diferencaEmMinutos < 60) {
+        return `${diferencaEmMinutos}min`;
+    }
+
+    const diferencaEmHoras = Math.floor(diferencaEmMinutos / 60);
+    if (diferencaEmHoras < 24) {
+        return `${diferencaEmHoras}h`;
+    }
+
+    // Mais de 24h: mostra a data fixa
+    const dia = date.getDate();
+    const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const mes = meses[date.getMonth()];
+    return `${dia} de ${mes}`;
+}
+
 function generateTweet() {
     const text = document.getElementById('tweetContent').value;
     if (!text) return;
@@ -30,13 +56,8 @@ function generateTweet() {
     const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "User", handle: "@user" };
     const feed = document.getElementById('main-feed');
 
-    const agora = new Date();
-    const dia = agora.getDate();
-    const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
-    const mes = meses[agora.getMonth()];
-    const hora = agora.getHours().toString().padStart(2, '0');
-    const min = agora.getMinutes().toString().padStart(2, '0');
-    const horarioFormatado = `${dia} de ${mes} • ${hora}:${min}`;
+    const dataPostagem = new Date();
+    const tempoFormatado = formatTwitterTime(dataPostagem);
 
     const tweetDiv = document.createElement('div');
     tweetDiv.className = 'tweet-card';
@@ -48,7 +69,7 @@ function generateTweet() {
                 <span class="display-name">${profile.name}</span>
                 <span class="handle-name">${profile.handle}</span>
                 <span class="tweet-dot">·</span>
-                <span class="tweet-time">${horarioFormatado}</span>
+                <span class="tweet-time">${tempoFormatado}</span>
             </div>
             <div class="tweet-text">${text}</div>
             <div class="tweet-icons">
