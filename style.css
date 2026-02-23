@@ -1,5 +1,7 @@
 :root {
     --twitter-blue: #1d9bf0;
+    --twitter-green: #00ba7c;
+    --twitter-pink: #f91880;
     --border-color: #333639;
     --bg-dark: #000000;
     --twitter-gray: rgb(113, 118, 123);
@@ -90,27 +92,6 @@ textarea {
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-tweet:hover {
-    opacity: 0.9;
-}
-
-.form-group {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.form-group input,
-.form-group textarea {
-    background: #111;
-    border: 1px solid var(--border-color);
-    color: white;
-    padding: 10px;
-    border-radius: 4px;
 }
 
 .tweet-card {
@@ -126,10 +107,6 @@ textarea {
     background-color: #333;
     margin-right: 12px;
     flex-shrink: 0;
-}
-
-.tweet-content {
-    flex-grow: 1;
 }
 
 .tweet-header {
@@ -156,18 +133,62 @@ textarea {
     white-space: pre-wrap;
 }
 
+/* Ícones Estilo Twitter */
 .tweet-icons {
     display: flex;
     justify-content: space-between;
     max-width: 425px;
     margin-top: 12px;
     color: var(--twitter-gray);
-    font-size: 13px;
 }
 
-.tweet-icons span:hover {
-    color: var(--twitter-blue);
+.icon-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-group svg {
+    width: 18.75px;
+    height: 18.75px;
+    fill: currentColor;
+}
+
+/* Cores de Hover específicas */
+.reply:hover {
+    color: var(--twitter-blue);
+}
+
+.retweet:hover {
+    color: var(--twitter-green);
+}
+
+.like:hover {
+    color: var(--twitter-pink);
+}
+
+.views:hover,
+.share:hover {
+    color: var(--twitter-blue);
+}
+
+.form-group {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: #111;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 .banner {

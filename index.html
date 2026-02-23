@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <div class="app-container">
         <nav class="sidebar">
             <div class="logo-container">
@@ -20,9 +19,7 @@
             <button onclick="showSection('profile-config')">⚙️ Configurações</button>
             <button onclick="showSection('profile-config')">🔄 Trocar Usuário</button>
         </nav>
-
         <main class="content">
-
             <section id="feed" class="view-section">
                 <div class="feed-header">Página Inicial</div>
                 <div class="tweet-composer">
@@ -34,7 +31,6 @@
                 </div>
                 <div id="main-feed"></div>
             </section>
-
             <section id="profile-config" class="view-section" style="display:none;">
                 <div class="feed-header">Configurar Perfil</div>
                 <div class="form-group">
@@ -47,7 +43,6 @@
                     <button class="btn-save" onclick="saveProfileData()">Salvar Alterações</button>
                 </div>
             </section>
-
             <section id="profile-view" class="view-section" style="display:none;">
                 <div class="profile-header-ui">
                     <div class="banner"></div>
@@ -59,10 +54,8 @@
                 </div>
                 <div id="user-tweets-feed"></div>
             </section>
-
         </main>
     </div>
-
     <script src="script.js"></script>
 </body>
 
