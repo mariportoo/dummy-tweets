@@ -2,6 +2,9 @@
     --twitter-blue: #1d9bf0;
     --border-color: #333639;
     --bg-dark: #000000;
+    --twitter-gray: rgb(113, 118, 123);
+    --twitter-white: rgb(231, 233, 234);
+    --twitter-border: rgb(47, 51, 54);
 }
 
 body {
@@ -86,13 +89,6 @@ textarea {
 
 .profile-info {
     padding: 15px;
-}
-
-/* Cores e fontes fiéis ao Twitter */
-:root {
-    --twitter-gray: rgb(113, 118, 123);
-    --twitter-white: rgb(231, 233, 234);
-    --twitter-border: rgb(47, 51, 54);
 }
 
 .tweet-card {

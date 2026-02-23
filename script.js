@@ -32,13 +32,14 @@ function generateTweet() {
     const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "User", handle: "@user" };
     const feed = document.getElementById('main-feed');
 
-    // Lógica para data e hora (Twitter Style)
+    // Formatação de data e hora atual (Twitter Style)
     const agora = new Date();
-    const hora = agora.getHours().toString().padStart(2, '0');
-    const min = agora.getMinutes().toString().padStart(2, '0');
     const dia = agora.getDate();
     const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
     const mes = meses[agora.getMonth()];
+    const hora = agora.getHours().toString().padStart(2, '0');
+    const min = agora.getMinutes().toString().padStart(2, '0');
+    const horarioFormatado = `${dia} de ${mes} • ${hora}:${min}`;
 
     const tweetDiv = document.createElement('div');
     tweetDiv.className = 'tweet-card';
