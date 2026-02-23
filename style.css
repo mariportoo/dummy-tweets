@@ -87,3 +87,73 @@ textarea {
 .profile-info {
     padding: 15px;
 }
+
+/* Cores e fontes fiéis ao Twitter */
+:root {
+    --twitter-gray: rgb(113, 118, 123);
+    --twitter-white: rgb(231, 233, 234);
+    --twitter-border: rgb(47, 51, 54);
+}
+
+.tweet-card {
+    display: flex;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--twitter-border);
+    background-color: black;
+}
+
+.tweet-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.tweet-content {
+    flex-grow: 1;
+    font-size: 15px;
+}
+
+.tweet-header {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 2px;
+}
+
+.display-name {
+    color: var(--twitter-white);
+    font-weight: 700;
+}
+
+.handle-name,
+.tweet-dot,
+.tweet-time {
+    color: var(--twitter-gray);
+}
+
+.tweet-text {
+    color: var(--twitter-white);
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+}
+
+.tweet-icons {
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+    color: var(--twitter-gray);
+    font-size: 13px;
+}
+
+.tweet-icons span {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tweet-icons span:hover {
+    color: var(--twitter-blue);
+}
