@@ -1,52 +1,64 @@
-<div class="app-container">
-    <nav class="sidebar">
-        <div class="logo-placeholder"></div>
-        <button onclick="showSection('feed')">🏠 Início</button>
-        <button onclick="showSection('profile-config')">⚙️ Configurar Perfil</button>
-        <button onclick="showSection('profile-view')">👤 Ver Perfil</button>
-    </nav>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <main class="content">
-        <section id="feed" class="view-section">
-            <div class="feed-header">Página Inicial</div>
-            <div class="tweet-composer-box">
-                <div class="tweet-avatar"></div>
-                <div class="composer-right">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Social Sim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="logo">𝕏</div>
+            <button onclick="showSection('feed')">🏠 Início</button>
+            <button onclick="showSection('profile-view')">👤 Perfil Atual</button>
+            <button onclick="showSection('profile-config')">⚙️ Configurações</button>
+            <button onclick="showSection('switch-user')">🔄 Trocar Usuário</button>
+        </nav>
+
+        <main class="content">
+
+            <section id="feed" class="view-section">
+                <h2>Página Inicial</h2>
+                <div class="tweet-composer">
                     <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
-                    <div class="composer-actions">
-                        <button class="btn-tweet" onclick="generateTweet()">Postar</button>
+                    <button class="btn-tweet" onclick="generateTweet()">Postar</button>
+                </div>
+                <div id="main-feed"></div>
+            </section>
+
+            <section id="profile-config" class="view-section" style="display:none;">
+                <h2>Configurar Perfil</h2>
+                <div class="form-group">
+                    <label>Nome de Exibição:</label>
+                    <input type="text" id="cfg-name" placeholder="Ex: Lorena Ferette">
+                    <label>Arroba (@):</label>
+                    <input type="text" id="cfg-handle" placeholder="Ex: @lore_ferette">
+                    <label>Bio:</label>
+                    <textarea id="cfg-bio"></textarea>
+                    <button class="btn-save" onclick="saveProfileData()">Salvar Alterações</button>
+                </div>
+            </section>
+
+            <section id="profile-view" class="view-section" style="display:none;">
+                <div class="profile-header-ui">
+                    <div class="banner"></div>
+                    <div class="profile-info">
+                        <h3 id="view-display-name">Nome</h3>
+                        <span id="view-display-handle">@handle</span>
+                        <p id="view-display-bio">Bio aqui...</p>
                     </div>
                 </div>
-            </div>
-            <div id="main-feed"></div>
-        </section>
+                <div id="user-tweets-feed"></div>
+            </section>
 
-        <section id="profile-config" class="view-section" style="display:none;">
-            <div class="feed-header">Configurações de Perfil</div>
-            <div class="config-form">
-                <label>Nome de Exibição:</label>
-                <input type="text" id="cfg-name" placeholder="Ex: Lorena Ferette">
+        </main>
+    </div>
 
-                <label>Nome de Usuário (@):</label>
-                <input type="text" id="cfg-handle" placeholder="Ex: @lore_ferette">
+    <script src="script.js"></script>
+</body>
 
-                <label>Biografia:</label>
-                <textarea id="cfg-bio" placeholder="Escreva algo..."></textarea>
-
-                <button class="btn-tweet" onclick="saveProfileData()">Salvar Dados</button>
-            </div>
-        </section>
-
-        <section id="profile-view" class="view-section" style="display:none;">
-            <div id="profile-header-display">
-                <div class="banner"></div>
-                <div class="profile-info-content">
-                    <h2 id="view-name">Nome</h2>
-                    <span id="view-handle">@usuario</span>
-                    <p id="view-bio">Bio...</p>
-                </div>
-            </div>
-            <div id="user-only-tweets"></div>
-        </section>
-    </main>
-</div>
+</html>

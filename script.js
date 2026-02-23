@@ -1,56 +1,42 @@
-// Função para navegar entre as abas
-function showSection(id) {
+// Função para trocar de aba sem recarregar
+function showSection(sectionId) {
     document.querySelectorAll('.view-section').forEach(s => s.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+    document.getElementById(sectionId).style.display = 'block';
 
-    if (id === 'profile-view') updateProfileView();
+    if (sectionId === 'profile-view') renderUserProfile();
 }
 
-// Salva os dados no navegador (LocalStorage)
+// Salva os dados do perfil atual
 function saveProfileData() {
     const profile = {
-        name: document.getElementById('cfg-name').value || "Nome",
-        handle: document.getElementById('cfg-handle').value || "@usuario",
-        bio: document.getElementById('cfg-bio').value || ""
+        name: document.getElementById('cfg-name').value,
+        handle: document.getElementById('cfg-handle').value,
+        bio: document.getElementById('cfg-bio').value
     };
     localStorage.setItem('activeProfile', JSON.stringify(profile));
-    alert("Perfil de " + profile.name + " salvo com sucesso!");
-    showSection('feed'); // Volta para o feed após salvar
+    alert("Perfil de " + profile.name + " salvo!");
 }
 
-// Gera o Tweet com o visual que você enviou no arquivo
+// Renderiza os dados na tela de perfil
+function renderUserProfile() {
+    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Novo Usuário", handle: "@user", bio: "" };
+    document.getElementById('view-display-name').innerText = profile.name;
+    document.getElementById('view-display-handle').innerText = profile.handle;
+    document.getElementById('view-display-bio').innerText = profile.bio;
+}
+
+// Sistema de Postagem Simples
 function generateTweet() {
     const text = document.getElementById('tweetContent').value;
     if (!text) return;
 
-    // Puxa os dados que você salvou na aba de configurações
-    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Maricota", handle: "@mari" };
-
+    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "User", handle: "@user" };
     const feed = document.getElementById('main-feed');
-    const tweetHTML = `
-        <article class="tweet-card">
-            <div class="tweet-avatar"></div>
-            <div class="tweet-content">
-                <div class="tweet-header-info">
-                    <span class="display-name">${profile.name}</span>
-                    <span class="handle-name">${profile.handle} · agora</span>
-                </div>
-                <div class="tweet-text">${text}</div>
-                <div class="tweet-actions">
-                    <span>💬 0</span> <span>🔁 0</span> <span>❤️ 0</span> <span>📊 0</span>
-                </div>
-            </div>
-        </article>
-    `;
 
-    feed.insertAdjacentHTML('afterbegin', tweetHTML);
-    document.getElementById('tweetContent').value = ""; // Limpa o campo
-}
+    const tweetDiv = document.createElement('div');
+    tweetDiv.className = 'tweet-card'; // Adicione estilo para isso no CSS!
+    tweetDiv.innerHTML = `<strong>${profile.name}</strong> ${profile.handle}<br>${text}`;
 
-// Atualiza a visualização do perfil
-function updateProfileView() {
-    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Nome", handle: "@usuario", bio: "" };
-    document.getElementById('view-name').innerText = profile.name;
-    document.getElementById('view-handle').innerText = profile.handle;
-    document.getElementById('view-bio').innerText = profile.bio;
+    feed.prepend(tweetDiv);
+    document.getElementById('tweetContent').value = "";
 }
