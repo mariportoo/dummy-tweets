@@ -83,6 +83,30 @@ textarea {
     outline: none;
 }
 
+/* Inputs de métricas no compositor */
+.composer-metrics {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.composer-metrics input {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--twitter-gray);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    width: 75px;
+    outline: none;
+}
+
+.composer-metrics input:focus {
+    border-color: var(--twitter-blue);
+    color: white;
+}
+
 .btn-tweet,
 .btn-save {
     background-color: var(--twitter-blue);
@@ -145,7 +169,8 @@ textarea {
 .icon-group {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    /* Aumentado para não ficar colado no número */
     font-size: 13px;
     cursor: pointer;
     transition: 0.2s;
