@@ -1,0 +1,38 @@
+body {
+    background-color: #15202b; /* Dark mode do Twitter */
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #38444d;
+}
+
+.tweet-card {
+    padding: 15px;
+    border-bottom: 1px solid #38444d;
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-header {
+    font-weight: bold;
+}
+
+.handle {
+    color: #8899a6;
+    font-weight: normal;
+}
+
+.tweet-text {
+    margin-top: 10px;
+}
+
+.interactions {
+    margin-top: 10px;
+    color: #8899a6;
+    display: flex;
+    gap: 20px;
+}

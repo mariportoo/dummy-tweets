@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Tweet Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <section class="profile-config">
+            <h3>Configurar Perfil</h3>
+            <input type="text" id="userName" placeholder="Nome (Ex: Lorena)">
+            <input type="text" id="userHandle" placeholder="@handle (Ex: @lore_ferette)">
+            <button onclick="saveProfile()">Salvar Perfil</button>
+        </section>
+
+        <hr>
+
+        <section class="tweet-composer">
+            <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
+            <button onclick="generateTweet()">Tweetar</button>
+        </section>
+
+        <div id="feed">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
