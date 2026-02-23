@@ -2,28 +2,58 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Fake Tweet Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Social Sim</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <section class="profile-config">
-            <h3>Configurar Perfil</h3>
-            <input type="text" id="userName" placeholder="Nome (Ex: Lorena)">
-            <input type="text" id="userHandle" placeholder="@handle (Ex: @lore_ferette)">
-            <button onclick="saveProfile()">Salvar Perfil</button>
-        </section>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="logo">𝕏</div>
+            <button onclick="showSection('feed')">🏠 Início</button>
+            <button onclick="showSection('profile-view')">👤 Perfil Atual</button>
+            <button onclick="showSection('profile-config')">⚙️ Configurações</button>
+            <button onclick="showSection('switch-user')">🔄 Trocar Usuário</button>
+        </nav>
 
-        <hr>
+        <main class="content">
+            
+            <section id="feed" class="view-section">
+                <h2>Página Inicial</h2>
+                <div class="tweet-composer">
+                    <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
+                    <button class="btn-tweet" onclick="generateTweet()">Postar</button>
+                </div>
+                <div id="main-feed"></div>
+            </section>
 
-        <section class="tweet-composer">
-            <textarea id="tweetContent" placeholder="O que está acontecendo?"></textarea>
-            <button onclick="generateTweet()">Tweetar</button>
-        </section>
+            <section id="profile-config" class="view-section" style="display:none;">
+                <h2>Configurar Perfil</h2>
+                <div class="form-group">
+                    <label>Nome de Exibição:</label>
+                    <input type="text" id="cfg-name" placeholder="Ex: Lorena Ferette">
+                    <label>Arroba (@):</label>
+                    <input type="text" id="cfg-handle" placeholder="Ex: @lore_ferette">
+                    <label>Bio:</label>
+                    <textarea id="cfg-bio"></textarea>
+                    <button class="btn-save" onclick="saveProfileData()">Salvar Alterações</button>
+                </div>
+            </section>
 
-        <div id="feed">
-            </div>
+            <section id="profile-view" class="view-section" style="display:none;">
+                <div class="profile-header-ui">
+                    <div class="banner"></div>
+                    <div class="profile-info">
+                        <h3 id="view-display-name">Nome</h3>
+                        <span id="view-display-handle">@handle</span>
+                        <p id="view-display-bio">Bio aqui...</p>
+                    </div>
+                </div>
+                <div id="user-tweets-feed"></div>
+            </section>
+
+        </main>
     </div>
 
     <script src="script.js"></script>

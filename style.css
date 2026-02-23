@@ -1,38 +1,82 @@
+:root {
+    --twitter-blue: #1d9bf0;
+    --border-color: #333639;
+    --bg-dark: #000000;
+}
+
 body {
-    background-color: #15202b; /* Dark mode do Twitter */
+    background-color: var(--bg-dark);
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
-.container {
-    max-width: 600px;
+.app-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    max-width: 1100px;
     margin: 0 auto;
-    border: 1px solid #38444d;
+    height: 100vh;
 }
 
-.tweet-card {
-    padding: 15px;
-    border-bottom: 1px solid #38444d;
+/* Sidebar */
+.sidebar {
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-.tweet-header {
+.sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar button:hover {
+    background-color: #181818;
+}
+
+/* Conteúdo */
+.content {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.tweet-composer {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    resize: none;
+    outline: none;
+}
+
+.btn-tweet {
+    background-color: var(--twitter-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
     font-weight: bold;
+    float: right;
+    cursor: pointer;
 }
 
-.handle {
-    color: #8899a6;
-    font-weight: normal;
-}
-
-.tweet-text {
-    margin-top: 10px;
-}
-
-.interactions {
-    margin-top: 10px;
-    color: #8899a6;
-    display: flex;
-    gap: 20px;
-}
+/* Perfil */
+.banner { height: 150px; background-color: #333; border-radius: 10px; }
+.profile-info { padding: 15px; }
