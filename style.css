@@ -1,64 +1,112 @@
-/* Cores extraídas do seu anexo */
 :root {
     --twitter-black: #000000;
     --twitter-gray: rgb(113, 118, 123);
     --twitter-white: rgb(231, 233, 234);
     --twitter-border: rgb(47, 51, 54);
+    --twitter-blue: #1d9bf0;
 }
 
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.sidebar {
+    border-right: 1px solid var(--twitter-border);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.sidebar button:hover {
+    background-color: #181818;
+}
+
+.feed-header {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--twitter-border);
+    sticky: top;
+}
+
+/* Estilo do Tweet baseado no seu anexo */
 .tweet-card {
     display: flex;
     padding: 12px 16px;
     border-bottom: 1px solid var(--twitter-border);
-    background-color: var(--twitter-black);
-    cursor: pointer;
 }
 
-/* Tamanho do avatar baseado no seu código: 40px */
 .tweet-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #333;
     margin-right: 12px;
-    flex-shrink: 0;
-}
-
-.tweet-content {
-    flex-grow: 1;
-}
-
-.tweet-header-info {
-    display: flex;
-    gap: 4px;
-    font-size: 15px;
-    margin-bottom: 2px;
 }
 
 .display-name {
+    font-weight: bold;
     color: var(--twitter-white);
-    font-weight: 700;
 }
 
-.handle-name, .tweet-time {
+.handle-name {
     color: var(--twitter-gray);
-    font-weight: 400;
+    margin-left: 4px;
 }
 
 .tweet-text {
-    color: var(--twitter-white);
-    font-size: 15px;
+    margin-top: 4px;
     line-height: 20px;
     white-space: pre-wrap;
-    word-wrap: break-word; /* Como no seu arquivo [cite: 81] */
 }
 
-/* Ações do Tweet (Reply, RT, Like) */
-.tweet-actions {
+/* Formulários */
+.config-form {
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    max-width: 425px;
-    margin-top: 12px;
-    color: var(--twitter-gray);
-    font-size: 13px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.config-form input,
+.config-form textarea {
+    background: black;
+    border: 1px solid var(--twitter-border);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-tweet {
+    background-color: var(--twitter-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
 }
