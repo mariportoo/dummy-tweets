@@ -1,30 +1,32 @@
-// 1. Navegação entre as seções
-function showSection(sectionId) {
+// Função para navegar entre as abas
+function showSection(id) {
     document.querySelectorAll('.view-section').forEach(s => s.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'block';
+    document.getElementById(id).style.display = 'block';
 
-    if (sectionId === 'profile-view') renderUserProfile();
+    if (id === 'profile-view') updateProfileView();
 }
 
-// 2. Salvar dados do perfil (Persistência)
+// Salva os dados no navegador (LocalStorage)
 function saveProfileData() {
     const profile = {
-        name: document.getElementById('cfg-name').value,
-        handle: document.getElementById('cfg-handle').value,
-        bio: document.getElementById('cfg-bio').value
+        name: document.getElementById('cfg-name').value || "Nome",
+        handle: document.getElementById('cfg-handle').value || "@usuario",
+        bio: document.getElementById('cfg-bio').value || ""
     };
     localStorage.setItem('activeProfile', JSON.stringify(profile));
-    alert("Perfil atualizado!");
+    alert("Perfil de " + profile.name + " salvo com sucesso!");
+    showSection('feed'); // Volta para o feed após salvar
 }
 
-// 3. Gerar Tweet (Fiel ao seu anexo)
+// Gera o Tweet com o visual que você enviou no arquivo
 function generateTweet() {
     const text = document.getElementById('tweetContent').value;
     if (!text) return;
 
-    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Nome", handle: "@user" };
-    const feed = document.getElementById('main-feed');
+    // Puxa os dados que você salvou na aba de configurações
+    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Maricota", handle: "@mari" };
 
+    const feed = document.getElementById('main-feed');
     const tweetHTML = `
         <article class="tweet-card">
             <div class="tweet-avatar"></div>
@@ -34,18 +36,21 @@ function generateTweet() {
                     <span class="handle-name">${profile.handle} · agora</span>
                 </div>
                 <div class="tweet-text">${text}</div>
+                <div class="tweet-actions">
+                    <span>💬 0</span> <span>🔁 0</span> <span>❤️ 0</span> <span>📊 0</span>
+                </div>
             </div>
         </article>
     `;
 
     feed.insertAdjacentHTML('afterbegin', tweetHTML);
-    document.getElementById('tweetContent').value = "";
+    document.getElementById('tweetContent').value = ""; // Limpa o campo
 }
 
-// 4. Carregar dados na aba de Perfil
-function renderUserProfile() {
-    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Nome", handle: "@user", bio: "Sem bio" };
-    document.getElementById('view-display-name').innerText = profile.name;
-    document.getElementById('view-display-handle').innerText = profile.handle;
-    document.getElementById('view-display-bio').innerText = profile.bio;
+// Atualiza a visualização do perfil
+function updateProfileView() {
+    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Nome", handle: "@usuario", bio: "" };
+    document.getElementById('view-name').innerText = profile.name;
+    document.getElementById('view-handle').innerText = profile.handle;
+    document.getElementById('view-bio').innerText = profile.bio;
 }
