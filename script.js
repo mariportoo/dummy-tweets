@@ -29,20 +29,21 @@ function generateTweet() {
     const text = document.getElementById('tweetContent').value;
     if (!text) return;
 
-    // Puxa os dados salvos ou usa um padrão
-    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "Usuário", handle: "@user" };
+    const profile = JSON.parse(localStorage.getItem('activeProfile')) || { name: "User", handle: "@user" };
     const feed = document.getElementById('main-feed');
 
-    // Formatação de hora atual
+    // Lógica para data e hora (Twitter Style)
     const agora = new Date();
     const hora = agora.getHours().toString().padStart(2, '0');
     const min = agora.getMinutes().toString().padStart(2, '0');
-    const horarioFormatado = `${hora}:${min}`;
+    const dia = agora.getDate();
+    const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const mes = meses[agora.getMonth()];
 
     const tweetDiv = document.createElement('div');
     tweetDiv.className = 'tweet-card';
 
-    // HTML com a estrutura de ícones e dados de tempo
+    // Novo HTML estruturado conforme o Twitter moderno
     tweetDiv.innerHTML = `
         <div class="tweet-avatar"></div>
         <div class="tweet-content">
@@ -50,7 +51,7 @@ function generateTweet() {
                 <span class="display-name">${profile.name}</span>
                 <span class="handle-name">${profile.handle}</span>
                 <span class="tweet-dot">·</span>
-                <span class="tweet-time">${horarioFormatado}</span>
+                <span class="tweet-time">${dia} de ${mes}</span>
             </div>
             <div class="tweet-text">${text}</div>
             <div class="tweet-icons">
