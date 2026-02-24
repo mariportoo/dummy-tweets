@@ -172,10 +172,12 @@ textarea {
     fill: currentColor;
 }
 
-/* Espaçamento interno entre ícone e número */
 .icon-count {
-    margin-left: 12px;
-    /* Aqui é onde a mágica do espaçamento acontece */
+    margin-left: 5px;
+}
+
+.icon-count-space {
+    width: 20px;
 }
 
 .reply:hover {
