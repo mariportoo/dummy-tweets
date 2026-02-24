@@ -178,7 +178,11 @@ textarea {
 }
 
 .icon-count {
-    margin-left: 12px;
+    margin-left: 5px;
+}
+
+.icon-count-space {
+    margin-left: 20px;
 }
 
 /* MODAL STYLES */
@@ -197,7 +201,6 @@ textarea {
     background-color: black;
     margin: 5% auto;
     padding: 0;
-    border-radius: 16px;
     width: 600px;
     border: 1px solid var(--border-color);
 }
