@@ -83,28 +83,20 @@ textarea {
     outline: none;
 }
 
-/* Inputs de métricas no compositor */
 .composer-metrics {
     display: flex;
     gap: 8px;
     margin: 10px 0;
-    flex-wrap: wrap;
 }
 
 .composer-metrics input {
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--twitter-gray);
-    padding: 4px 10px;
-    border-radius: 15px;
+    padding: 4px 8px;
+    border-radius: 12px;
     font-size: 12px;
-    width: 75px;
-    outline: none;
-}
-
-.composer-metrics input:focus {
-    border-color: var(--twitter-blue);
-    color: white;
+    width: 80px;
 }
 
 .btn-tweet,
@@ -169,8 +161,6 @@ textarea {
 .icon-group {
     display: flex;
     align-items: center;
-    gap: 12px;
-    /* Aumentado para não ficar colado no número */
     font-size: 13px;
     cursor: pointer;
     transition: 0.2s;
@@ -182,7 +172,12 @@ textarea {
     fill: currentColor;
 }
 
-/* Cores de Hover específicas */
+/* Espaçamento interno entre ícone e número */
+.icon-count {
+    margin-left: 12px;
+    /* Aqui é onde a mágica do espaçamento acontece */
+}
+
 .reply:hover {
     color: var(--twitter-blue);
 }
